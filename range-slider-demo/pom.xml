@@ -5,7 +5,7 @@
 
     <groupId>com.github.daishy</groupId>
     <artifactId>range-slider-demo</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -14,7 +14,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
 
         <spring-boot.version>1.5.9.RELEASE</spring-boot.version>
-        <vaadin.version>8.1.7</vaadin.version>
+        <vaadin.version>8.4.2</vaadin.version>
     </properties>
 
 
