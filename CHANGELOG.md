@@ -5,6 +5,7 @@ First Release
 
 
 # Version 1.0.1
+* Changed buggy behaviour while setting to boundaries/values
 
 
 # Version 1.0.2

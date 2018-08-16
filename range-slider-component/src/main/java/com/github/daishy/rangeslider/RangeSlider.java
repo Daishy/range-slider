@@ -16,11 +16,11 @@ import java.util.Objects;
  *
  * @author daishy@github.com
  */
-//@JavaScript({"generated/rangeslider.min.js"})
-//@StyleSheet({"generated/rangeslider.min.css"})
+@JavaScript({"generated/rangeslider.min.js"})
+@StyleSheet({"generated/rangeslider.min.css"})
 // For debugging / testing include the files directly:
-@JavaScript({"nouislider.js", "rangeslider-connector.js"})
-@StyleSheet({"nouislider.css", "rangeslider-styles.css"})
+//@JavaScript({"nouislider.js", "rangeslider-connector.js"})
+//@StyleSheet({"nouislider.css", "rangeslider-styles.css"})
 public class RangeSlider extends AbstractJavaScriptComponent implements HasValue<Range> {
 
     /**
