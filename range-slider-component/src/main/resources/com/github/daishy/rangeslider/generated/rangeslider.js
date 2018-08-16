@@ -2383,7 +2383,7 @@ function scope ( target, options, originalOptions ){
             'step': state.step,
             'format': {
                 to: function (value) {
-                    return value.toString();
+                    return value.toFixed(0);
                 },
                 from: function (value) {
                     return value;
