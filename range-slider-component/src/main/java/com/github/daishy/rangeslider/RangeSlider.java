@@ -1,6 +1,5 @@
 package com.github.daishy.rangeslider;
 
-import java.util.Objects;
 import com.github.daishy.rangeslider.client.Range;
 import com.github.daishy.rangeslider.client.RangeSliderState;
 import com.vaadin.annotations.JavaScript;
@@ -8,19 +7,20 @@ import com.vaadin.annotations.StyleSheet;
 import com.vaadin.data.HasValue;
 import com.vaadin.shared.Registration;
 import com.vaadin.ui.AbstractJavaScriptComponent;
-
 import elemental.json.JsonArray;
+
+import java.util.Objects;
 
 /**
  * A vaadin 8 range-slider-component.
  *
  * @author daishy@github.com
  */
-@JavaScript({"generated/rangeslider.min.js"})
-@StyleSheet({"generated/rangeslider.min.css"})
+//@JavaScript({"generated/rangeslider.min.js"})
+//@StyleSheet({"generated/rangeslider.min.css"})
 // For debugging / testing include the files directly:
-//@JavaScript({"nouislider.js", "rangeslider-connector.js"})
-//@StyleSheet({"nouislider.css", "rangeslider-styles.css"})
+@JavaScript({"nouislider.js", "rangeslider-connector.js"})
+@StyleSheet({"nouislider.css", "rangeslider-styles.css"})
 public class RangeSlider extends AbstractJavaScriptComponent implements HasValue<Range> {
 
     /**
@@ -130,6 +130,8 @@ public class RangeSlider extends AbstractJavaScriptComponent implements HasValue
 
         Range oldValue = this.value;
         this.value = value;
+        this.getState().currentLower = this.value.getLower();
+        this.getState().currentUpper = this.value.getUpper();
 
         // if the value was set programmatically update the js-component
         if (!userOriginated) {
@@ -210,10 +212,20 @@ public class RangeSlider extends AbstractJavaScriptComponent implements HasValue
         return new Range(this.getState().lowerBoundary, this.getState().upperBoundary);
     }
 
+    /**
+     * Get the current tooltip-mode.
+     *
+     * @return -
+     */
     public RangeSliderState.Tooltips getTooltips() {
         return this.getState().tooltips;
     }
 
+    /**
+     * Set the current tooltip-mode
+     *
+     * @param value -
+     */
     public void setTooltips(RangeSliderState.Tooltips value) {
         this.getState().tooltips = value;
     }

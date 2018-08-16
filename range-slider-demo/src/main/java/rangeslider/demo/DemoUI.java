@@ -1,7 +1,5 @@
 package rangeslider.demo;
 
-import java.util.EnumSet;
-
 import com.github.daishy.rangeslider.RangeConverter;
 import com.github.daishy.rangeslider.RangeSlider;
 import com.github.daishy.rangeslider.client.Range;
@@ -21,6 +19,8 @@ import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.Slider;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
+
+import java.util.EnumSet;
 
 
 @Title("Test Application")
@@ -65,6 +65,7 @@ public class DemoUI extends UI {
         ComboBox<RangeSliderState.Tooltips> tooltips = new ComboBox<>("Tooltips", EnumSet.allOf(RangeSliderState.Tooltips.class));
         layout.addComponent(tooltips);
 
+        layout.addComponent(new Button("Hide/Show Slider", event -> rangeSlider.setVisible(!rangeSlider.isVisible())));
 
         Binder<RangeSlider> binder = new Binder<RangeSlider>();
         binder.setBean(rangeSlider);

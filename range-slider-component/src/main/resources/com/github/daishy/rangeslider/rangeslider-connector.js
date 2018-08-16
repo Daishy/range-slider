@@ -20,7 +20,7 @@ window.com_github_daishy_rangeslider_RangeSlider = function () {
     // wrapper-function to create and update the slider.
     function createSlider(state) {
         var previousValue = null;
-        var start = [state.lowerBoundary, state.upperBoundary];
+        var start = [state.currentLower, state.currentUpper];
         if (container.noUiSlider) {
             start = container.noUiSlider.get();
             previousValue = start;

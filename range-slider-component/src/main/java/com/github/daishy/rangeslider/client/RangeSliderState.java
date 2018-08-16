@@ -17,6 +17,13 @@ public class RangeSliderState extends JavaScriptComponentState {
     public Integer upperBoundary = 0;
 
     /**
+     * The current lower- and upper-value. This is currently used to update the set value if
+     * the component is rerendered on the client-side (for example if it was made invisible)
+     */
+    public Integer currentLower = 0;
+    public Integer currentUpper = 0;
+
+    /**
      * The step-size each side of the slider takes
      */
     public Integer step = 1;
