@@ -5,7 +5,7 @@
 
     <groupId>com.github.daishy</groupId>
     <artifactId>range-slider-demo</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.3</version>
     <packaging>jar</packaging>
 
     <properties>
