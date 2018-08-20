@@ -1,5 +1,6 @@
 package com.github.daishy.rangeslider;
 
+import java.util.Objects;
 import com.github.daishy.rangeslider.client.Range;
 import com.github.daishy.rangeslider.client.RangeSliderState;
 import com.vaadin.annotations.JavaScript;
@@ -7,9 +8,8 @@ import com.vaadin.annotations.StyleSheet;
 import com.vaadin.data.HasValue;
 import com.vaadin.shared.Registration;
 import com.vaadin.ui.AbstractJavaScriptComponent;
-import elemental.json.JsonArray;
 
-import java.util.Objects;
+import elemental.json.JsonArray;
 
 /**
  * A vaadin 8 range-slider-component.

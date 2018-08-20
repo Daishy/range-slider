@@ -5,7 +5,6 @@ First Release
 
 
 # Version 1.0.1
-* Changed buggy behaviour while setting to boundaries/values
 
 
 # Version 1.0.2
@@ -14,3 +13,7 @@ First Release
 # Version 1.0.3
 * Fixed a bug when hiding and showing the range-slider, the current values were not displayed correctly
 * Updated to version 11.1.0 of the noUiSlider-Library
+
+# Version 1.0.4
+* Updated to version 11.1.0 of the noUiSlider-Library temporarily reverted until the layouting-Problem 
+    can be fixed
