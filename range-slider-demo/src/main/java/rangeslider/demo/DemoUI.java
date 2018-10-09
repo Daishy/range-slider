@@ -1,5 +1,6 @@
 package rangeslider.demo;
 
+import java.util.EnumSet;
 import com.github.daishy.rangeslider.RangeConverter;
 import com.github.daishy.rangeslider.RangeSlider;
 import com.github.daishy.rangeslider.client.Range;
@@ -19,8 +20,6 @@ import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.Slider;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
-
-import java.util.EnumSet;
 
 
 @Title("Test Application")
@@ -53,6 +52,9 @@ public class DemoUI extends UI {
         TextField step = new TextField("step");
         layout.addComponent(step);
 
+        TextField precision = new TextField("precision");
+        layout.addComponent(precision);
+
         TextField minimumDifference = new TextField("miniumDifference");
         layout.addComponent(minimumDifference);
 
@@ -79,6 +81,9 @@ public class DemoUI extends UI {
         binder.forField(step)
                 .withConverter(new StringToIntegerConverter("No valid integer"))
                 .bind(RangeSlider::getStep, RangeSlider::setStep);
+        binder.forField(precision)
+                .withConverter(new StringToIntegerConverter("no valid integer"))
+                .bind(RangeSlider::getPrecision, RangeSlider::setPrecision);
         binder.forField(readonly)
                 .bind(RangeSlider::isReadOnly, RangeSlider::setReadOnly);
         binder.forField(tooltips)

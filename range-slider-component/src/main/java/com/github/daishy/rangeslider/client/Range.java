@@ -3,6 +3,7 @@ package com.github.daishy.rangeslider.client;
 import com.github.daishy.rangeslider.RangeSlider;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Represents the value and boundaries for the {@link RangeSlider}. Two ranges are equal, if both the
@@ -14,8 +15,8 @@ public class Range implements Serializable {
 
     private static final long serialVersionUID = -1490025607687396331L;
 
-    private int lower;
-    private int upper;
+    private double lower;
+    private double upper;
 
     /**
      * Create a new range. The lower value must be less or equal to the upper value.
@@ -23,7 +24,7 @@ public class Range implements Serializable {
      * @param lower The lower value.
      * @param upper The upper value.
      */
-    public Range(int lower, int upper) {
+    public Range(double lower, double upper) {
         if (lower > upper) {
             throw new IllegalArgumentException("Lower value must be less/equal of upper value");
         }
@@ -38,7 +39,7 @@ public class Range implements Serializable {
         this(0, 0);
     }
 
-    public int getLower() {
+    public double getLower() {
         return lower;
     }
 
@@ -48,14 +49,14 @@ public class Range implements Serializable {
      *
      * @param lower -
      */
-    public void setLower(int lower) {
+    public void setLower(double lower) {
         if (lower > this.upper) {
             throw new IllegalArgumentException("Given lower value is more than the current upper value");
         }
         this.lower = lower;
     }
 
-    public int getUpper() {
+    public double getUpper() {
         return upper;
     }
 
@@ -64,7 +65,7 @@ public class Range implements Serializable {
      *
      * @param upper -
      */
-    public void setUpper(int upper) {
+    public void setUpper(double upper) {
         if (upper < this.lower) {
             throw new IllegalArgumentException("Given upper value is less than the current lower value");
         }
@@ -86,7 +87,7 @@ public class Range implements Serializable {
      *
      * @return -
      */
-    public int getDifference() {
+    public double getDifference() {
         return this.upper - this.lower;
     }
 
@@ -108,8 +109,6 @@ public class Range implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = lower;
-        result = 31 * result + upper;
-        return result;
+        return Objects.hash(lower, upper);
     }
 }

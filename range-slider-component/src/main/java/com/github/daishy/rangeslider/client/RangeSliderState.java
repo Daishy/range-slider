@@ -13,20 +13,25 @@ public class RangeSliderState extends JavaScriptComponentState {
      * to force the serialisation of both values each time to the support the current recreation of the
      * noUiSlider each time the state is changed.
      */
-    public Integer lowerBoundary = 0;
-    public Integer upperBoundary = 0;
+    public Double lowerBoundary = 0.0;
+    public Double upperBoundary = 0.0;
 
     /**
      * The current lower- and upper-value. This is currently used to update the set value if
      * the component is rerendered on the client-side (for example if it was made invisible)
      */
-    public Integer currentLower = 0;
-    public Integer currentUpper = 0;
+    public Double currentLower = 0.0;
+    public Double currentUpper = 0.0;
 
     /**
      * The step-size each side of the slider takes
      */
     public Integer step = 1;
+
+    /**
+     * The precision to display for the slider-values. A precision of 0 just displays an integer.
+     */
+    public Integer precision = 0;
 
     /**
      * The minimum distance between the lower and upper value

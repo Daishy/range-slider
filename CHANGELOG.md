@@ -17,3 +17,7 @@ First Release
 # Version 1.0.4
 * Updated to version 11.1.0 of the noUiSlider-Library temporarily reverted until the layouting-Problem 
     can be fixed
+    
+# Version 1.1.0
+Changed the API to use doubles instead of integers. setPrecision is added to control how many
+decimal-parts are displayed (precision 2 is 2.12 for example). Precision is 0 by default (normal integers).

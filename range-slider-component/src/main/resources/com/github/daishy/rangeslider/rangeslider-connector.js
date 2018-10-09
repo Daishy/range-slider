@@ -37,7 +37,8 @@ window.com_github_daishy_rangeslider_RangeSlider = function () {
             'step': state.step,
             'format': {
                 to: function (value) {
-                    return value.toFixed(0);
+                    var precision = state.precision;
+                    return value.toFixed(precision);
                 },
                 from: function (value) {
                     return value;

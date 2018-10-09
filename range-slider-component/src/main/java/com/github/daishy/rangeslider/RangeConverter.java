@@ -26,8 +26,8 @@ public class RangeConverter implements Converter<String, Range> {
     public Result<Range> convertToModel(String value, ValueContext context) {
         try {
             String[] values = value.split("-");
-            int lower = Integer.valueOf(values[0].trim());
-            int upper = Integer.valueOf(values[1].trim());
+            double lower = Double.valueOf(values[0].trim());
+            double upper = Double.valueOf(values[1].trim());
             return Result.ok(new Range(lower, upper));
         } catch (Exception e) {
             return Result.error(this.message);
@@ -36,6 +36,7 @@ public class RangeConverter implements Converter<String, Range> {
 
     @Override
     public String convertToPresentation(Range value, ValueContext context) {
-        return String.format("%d - %d", value.getLower(), value.getUpper());
+        return String.format("%f - %f", value.getLower(), value.getUpper())
+                .replace(",", ".");
     }
 }

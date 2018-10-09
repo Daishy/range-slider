@@ -10,13 +10,13 @@ for more infos.
 
 ## Features
 * changing the step size between values
+* Setting the displayed decimal-precision for values.
 * changing the minimal and maximal difference allowed between the lower and upper value
 * Value-Tooltips can be displayed never, always, on-focus or on-change.
 * slider can be read-only.
 * slider integrates in the vaadin-8 binder
 
 ## Known Limitations
-* Currently only integer-ranges are supported.
 * Styling adapted to valo, other themes may require some tuning. See the range-slider.css for more infos. 
 
 ## Building and running demo
@@ -37,7 +37,6 @@ Current process:
     git tag range-slider-X.X.X
     Change Version from X.X.X to Y.Y.Y-SNAPSHOT
  
-TODO: Change to real release-process ...  
    
  
 ## License & Author
@@ -51,7 +50,7 @@ Create a new field as you would any other vaadin-field-component via the provide
 
 Binding field via a binder:
 ```java
-RangeSlider slider = new RangeSlider("cost-range", new Range(0, 200));
+RangeSlider slider = new RangeSlider("cost-range", new Range(0.0, 200.0));
 
 Binder<> binder = new Binder<Data>();
 binder.forField(slider).bind(Data::getCostRange, Data::setCostRange);
@@ -59,20 +58,27 @@ binder.forField(slider).bind(Data::getCostRange, Data::setCostRange);
 
 Setting a minimal and maximal difference between the values:
 ```java
-RangeSlider slider = new RangeSlider("cost-range", new Range(0, 200));
+RangeSlider slider = new RangeSlider("cost-range", new Range(0.0, 200.0));
 slider.setMinimalDifference(10); // values must be at least 10 appart
 slider.setMaximalDifference(50); // but no more than 50 appart
 ```
 
-Set the stepsize that are allowed
+Setting the precision and step-size to allow decimal values:
 ```java
-RangeSlider slider = new RangeSlider("cost-range", new Range(0, 10));
+RangeSlider slider = new RangeSlider("cost-range", new Range(0.0, 10.0));
+slider.setStep(0); // Any steps are allowed
+slider.setPrecision(2); // Show values as 2.24, 5.23 etc.
+```
+
+Set the allowed step-size: 
+```java
+RangeSlider slider = new RangeSlider("cost-range", new Range(0.0, 10.0));
 slider.setStep(2); // only 0, 2, 4, 6, 8, 10 are selectable
 ```
 
 Show Tooltips for the selected values:
 ```java
-RangeSlider slider = new RangeSlider("cost-range", new Range(0, 10));
+RangeSlider slider = new RangeSlider("cost-range", new Range(0.0, 10.0));
 slider.setTooltips(RangeSliderState.Tooltips.NEVER); // Never showing the selected values
 slider.setTooltips(RangeSliderState.Tooltips.ON_CHANGE); // Show selected values if slider is moved
 slider.setTooltips(RangeSliderState.Tooltips.ALWAYS); // Always show the selected values

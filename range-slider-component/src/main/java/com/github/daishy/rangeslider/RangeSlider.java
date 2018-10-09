@@ -21,7 +21,7 @@ import elemental.json.JsonArray;
 // For debugging / testing include the files directly:
 //@JavaScript({"nouislider.js", "rangeslider-connector.js"})
 //@StyleSheet({"nouislider.css", "rangeslider-styles.css"})
-public class RangeSlider extends AbstractJavaScriptComponent implements HasValue<Range> {
+public class RangeSlider<T extends Number> extends AbstractJavaScriptComponent implements HasValue<Range> {
 
     /**
      * The current value of the field.
@@ -88,8 +88,8 @@ public class RangeSlider extends AbstractJavaScriptComponent implements HasValue
         String rawLower = data.getString(0);
         String rawUpper = data.getString(1);
         // raw value is a decimal (like 2.0)
-        int lower = Double.valueOf(rawLower).intValue();
-        int upper = Double.valueOf(rawUpper).intValue();
+        double lower = Double.valueOf(rawLower);
+        double upper = Double.valueOf(rawUpper);
         this.setValue(new Range(lower, upper), true);
     }
 
@@ -171,6 +171,27 @@ public class RangeSlider extends AbstractJavaScriptComponent implements HasValue
     }
 
     /**
+     * Returns the current displayed precision for the floating-point values.
+     *
+     * @return -
+     */
+    public Integer getPrecision() {
+        return this.getState().precision;
+    }
+
+    /**
+     * Updates the current presision for the decimal-Values.
+     *
+     * @param precision The new precision. Must be greater than or equal 0.
+     */
+    public void setPrecision(int precision) {
+        if (precision < 0) {
+            throw new IllegalArgumentException("The precision must be greater or equal 0");
+        }
+        this.getState().precision = precision;
+    }
+
+    /**
      * Update the boundaries of the slider. If the current value does not fit to the new boundaries the lower and/or
      * upper value is changed accordingly.
      *
@@ -186,10 +207,10 @@ public class RangeSlider extends AbstractJavaScriptComponent implements HasValue
     }
 
     private void adaptValueToFitNewBoundaries(Range boundaries) {
-        int lowerBound = boundaries.getLower();
-        int upperBound = boundaries.getUpper();
-        int newLower = Math.min(Math.max(this.value.getLower(), lowerBound), upperBound);
-        int newUpper = Math.max(Math.min(this.value.getUpper(), upperBound), lowerBound);
+        double lowerBound = boundaries.getLower();
+        double upperBound = boundaries.getUpper();
+        double newLower = Math.min(Math.max(this.value.getLower(), lowerBound), upperBound);
+        double newUpper = Math.max(Math.min(this.value.getUpper(), upperBound), lowerBound);
         this.setValue(new Range(newLower, newUpper), false);
     }
 
@@ -199,7 +220,7 @@ public class RangeSlider extends AbstractJavaScriptComponent implements HasValue
      * @param lower -
      * @param upper -
      */
-    public void setBoundaries(int lower, int upper) {
+    public void setBoundaries(double lower, double upper) {
         this.setBoundaries(new Range(lower, upper));
     }
 
