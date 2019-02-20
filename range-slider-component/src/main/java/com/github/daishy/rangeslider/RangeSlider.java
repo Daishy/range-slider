@@ -27,6 +27,14 @@ public class RangeSlider extends AbstractJavaScriptComponent implements HasValue
      * The current value of the field.
      */
     private Range value;
+    
+    /**
+     * Create the new range-slider. The value of this field is initialized with a (0, 0) boundary.
+     * This no-argument constructor is necessary for Vaadin to auto-bind html to Java components.
+     *     */
+    public RangeSlider() {
+        this(new Range());
+    }
 
     /**
      * Create the new range-slider. The value of this field is initialized with the given boundary.
