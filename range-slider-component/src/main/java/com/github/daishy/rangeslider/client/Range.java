@@ -43,6 +43,10 @@ public class Range implements Serializable {
         return lower;
     }
 
+    public int getLowerAsInt() {
+        return (int) Math.round(this.lower);
+    }
+
 
     /**
      * Set the lower value. Must be less or equal to the current upper value.
@@ -51,13 +55,17 @@ public class Range implements Serializable {
      */
     public void setLower(double lower) {
         if (lower > this.upper) {
-            throw new IllegalArgumentException("Given lower value is more than the current upper value");
+            throw new IllegalArgumentException("Given lower value is greater than the current upper value");
         }
         this.lower = lower;
     }
 
     public double getUpper() {
         return upper;
+    }
+
+    public int getUpperAsInt() {
+        return (int) Math.round(this.upper);
     }
 
     /**

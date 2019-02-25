@@ -1,15 +1,15 @@
 package com.github.daishy.rangeslider;
 
+import com.github.daishy.rangeslider.client.Range;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
-
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import com.github.daishy.rangeslider.client.Range;
 
 /**
  * @author smca@viessmann.com
@@ -76,6 +76,7 @@ public class RangeTest {
         Range range = new Range(5, 10);
         range.setLower(8);
         assertThat(range.getLower(), is(equalTo(8.0)));
+        assertThat(range.getLowerAsInt(), is(equalTo(8)));
     }
 
     @Test
@@ -90,6 +91,7 @@ public class RangeTest {
         Range range = new Range(5, 10);
         range.setUpper(5);
         assertThat(range.getUpper(), is(equalTo(5.0)));
+        assertThat(range.getUpperAsInt(), is(equalTo(5)));
     }
 
     @Test
@@ -107,6 +109,14 @@ public class RangeTest {
         assertFalse(new Range(-2, 8).contains(new Range(-5, 5)));
         assertFalse(new Range(-2, 8).contains(new Range(5, 15)));
         assertFalse(new Range(-2, 8).contains(new Range(-5, 15)));
+    }
+
+    @Test
+    public void getAsIntShouldConvertCorrectly() {
+        Range range = new Range(0, 10);
+
+        range.setLower(5.5);
+        assertThat(range.getLowerAsInt(), is(equalTo(6)));
     }
 
 }

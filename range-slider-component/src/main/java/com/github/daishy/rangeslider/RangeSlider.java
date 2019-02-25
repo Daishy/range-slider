@@ -1,6 +1,5 @@
 package com.github.daishy.rangeslider;
 
-import java.util.Objects;
 import com.github.daishy.rangeslider.client.Range;
 import com.github.daishy.rangeslider.client.RangeSliderState;
 import com.vaadin.annotations.JavaScript;
@@ -8,8 +7,9 @@ import com.vaadin.annotations.StyleSheet;
 import com.vaadin.data.HasValue;
 import com.vaadin.shared.Registration;
 import com.vaadin.ui.AbstractJavaScriptComponent;
-
 import elemental.json.JsonArray;
+
+import java.util.Objects;
 
 /**
  * A vaadin 8 range-slider-component.
@@ -21,12 +21,20 @@ import elemental.json.JsonArray;
 // For debugging / testing include the files directly:
 //@JavaScript({"nouislider.js", "rangeslider-connector.js"})
 //@StyleSheet({"nouislider.css", "rangeslider-styles.css"})
-public class RangeSlider<T extends Number> extends AbstractJavaScriptComponent implements HasValue<Range> {
+public class RangeSlider extends AbstractJavaScriptComponent implements HasValue<Range> {
 
     /**
      * The current value of the field.
      */
     private Range value;
+
+    /**
+     * Create the new range-slider. The value and boundary of this field is initialized with a (0, 0) boundary.
+     * This no-argument constructor is necessary for Vaadin to auto-bind html to Java components.
+     */
+    public RangeSlider() {
+        this(new Range());
+    }
 
     /**
      * Create the new range-slider. The value of this field is initialized with the given boundary.
